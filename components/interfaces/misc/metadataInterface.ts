@@ -1,0 +1,3 @@
+type MetaDataProps = {
+  title: string;
+};
