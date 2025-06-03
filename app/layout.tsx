@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import ThemeHydrator from "@/components/layout/ThemeHydrator";
 import Providers from "./providers";
 import Toasters from "./toasters";
 import "./globals.css";
@@ -19,7 +20,8 @@ export default function RootLayout({ children }: Readonly<{
       <html lang="en">
         <body>
           <Providers>
-            <section className="flex flex-col justify-between h-screen">
+            <ThemeHydrator/>
+            <section className="flex flex-col justify-between min-h-screen">
               <Navbar/>
                 <main className="container mx-auto px-3 pb-12">
                   {children}
