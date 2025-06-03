@@ -4,8 +4,11 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { githubApi } from "./api/services/githubApi";
 
+import themeReducer from "./features/themeSlice";
+
 export const store = configureStore({
   reducer: {
+    theme: themeReducer,
     [githubApi.reducerPath]: githubApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
