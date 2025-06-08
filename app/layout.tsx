@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import ThemeHydrator from "@/components/layout/ThemeHydrator";
+
 import Providers from "./providers";
 import Toasters from "./toasters";
 import "./globals.css";
+import ThemeChanger from "@/components/layout/theme/ThemeChanger";
+import ThemeHydrator from "@/components/layout/theme/ThemeHydrator";
 
 export const metadata: Metadata = {
   title: "Github Finder",
@@ -21,6 +23,7 @@ export default function RootLayout({ children }: Readonly<{
         <body>
           <Providers>
             <ThemeHydrator/>
+            <ThemeChanger/>
             <section className="flex flex-col justify-between min-h-screen">
               <Navbar/>
                 <main className="container mx-auto px-3 pb-12">

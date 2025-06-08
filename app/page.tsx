@@ -1,3 +1,5 @@
+"use client"
+
 import UsersSearch from "@/components/users/UsersSearch";
 
 function Home(){

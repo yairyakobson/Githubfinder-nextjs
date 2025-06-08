@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 
+import { useAppSelector } from "@/components/hooks/useAppSelector";
 import { UserGithubData } from "@/components/pages/userPages/userGithubData";
 import { UserPersonalData } from "@/components/pages/userPages/userPersonalData";
 import { UserProfessionalData } from "@/components/pages/userPages/userProfessionalData";
@@ -13,6 +14,7 @@ import UserRepos from "@/components/repos/UserRepos";
 
 export default function User(){
   const params = useParams();
+  const theme = useAppSelector((state) => state.theme);
   const loginParam = Array.isArray(params.login) ? params.login[0] : params.login;
 
   const { data, isLoading } = useGetUserAndReposQuery(loginParam!);
@@ -44,9 +46,11 @@ export default function User(){
       <section className="w-full mx-auto
       lg:w-10/12">
         <section className="px-5">
-          <Link href="/" replace className="btn btn-block button-text
+          <Link href="/" replace
+          className={`btn btn-block button-text
+          ${theme ? "btn-soft" : "btn-neutral"}
           md:text-xl
-          lg:text-lg">Back To Search
+          lg:text-lg`}>Back To Search
           </Link>
         </section>
 

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "./theme/ThemeToggle";
 
 function Navbar(){
   return(

@@ -2,9 +2,12 @@
 
 import { FaEye, FaInfo, FaLink, FaStar, FaUtensils } from "react-icons/fa";
 
+import { useAppSelector } from "../hooks/useAppSelector";
 import { SingleRepoProps } from "../interfaces/repos/githubSingleRepoInterface";
 
 function ReposList({ repo }: SingleRepoProps){
+  const theme = useAppSelector((state) => state.theme);
+
   const {
     name,
     description,
@@ -16,18 +19,20 @@ function ReposList({ repo }: SingleRepoProps){
   } = repo
 
   return(
-    <section className="card mb-2 rounded-xl bg-gray-800 text-white
-    hover:bg-inherit
-    hover:text-black
+    <section className={`card mb-2 rounded-xl
+    ${theme ?
+    "bg-slate-600 text-white hover:bg-neutral-900"
+    : "bg-slate-100 text-black hover:bg-slate-600 hover:text-white"
+    }
     hover:outline
-    hover:outline-inherit">
+    hover:outline-inherit`}>
       <section className="card-body
       md:text-lg">
         <h3 className="repo-data mb-2 font-bold pb-2
         lg:text-xl
         xl:text-2xl">
         <a href={html_url}>
-          <FaLink className="inline mr-3"/>{name}
+          <FaLink className={`inline mr-3 ${theme ? "text-white" : "text-black"}`}/>{name}
         </a>
 
         </h3>

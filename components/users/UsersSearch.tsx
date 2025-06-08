@@ -44,11 +44,12 @@ function UsersSearch(){
   return(
     <section className="grid grid-cols-1">
       <form onSubmit={handleSubmit}>
-        <section className="form-control">
+        <section>
           <section className="flex">
             <input type="text"
-            className="w-full outline-transparent p-[0.7rem]
-            bg-gray-200 input-lg text-black mb-5"
+            className="w-full p-[0.7rem]
+            bg-gray-200 input-lg text-black mb-5
+            focus-within:outline-none"
             placeholder="Search"
             ref={inputRef}/>
 
@@ -56,18 +57,22 @@ function UsersSearch(){
               <button type="button"
               key="clear"
               onClick={handleClear}
-              className="btn btn-lg rounded-l-none">Clear
+              className="btn btn-lg btn-primary rounded-l-none">Clear
               </button>
             ) : (
               <button type="submit"
               key="go"
-              className="btn btn-lg rounded-l-none"
-              disabled={isFetching}
-              >{isFetching ? "Loading..." : "Go"}
+              className={`btn btn-lg btn-primary rounded-l-none
+              ${isFetching && "btn-primary"}`}
+              >{isFetching ? "Loading" : "Go"}
               </button>
             )}
           </section>
-          <UsersList users={users} isLoading={isFetching}/>
+
+          <UsersList
+          users={users}
+          isLoading={isFetching}/>
+
         </section>
       </form>
     </section>

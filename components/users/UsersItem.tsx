@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 
+import { useAppSelector } from "../hooks/useAppSelector";
 import { GithubSingleUserProps } from "../interfaces/user/githubSingleUserInterface";
 
 function UsersItem({ user: { login, avatar_url } }: GithubSingleUserProps){
+  const theme = useAppSelector((state) => state.theme);
+
   return(
-    <section className="card shadow-md bg-slate-100 text-2xl">
+    <section className={`card shadow-md text-2xl
+    ${theme ? "bg-slate-100" : "bg-neutral-900"}`}>
       <section className="card-body flex-row items-center space-x-3">
         <section>
           <section>
@@ -19,15 +23,18 @@ function UsersItem({ user: { login, avatar_url } }: GithubSingleUserProps){
 
         <section>
           <Link href={`/user/${login}`}
-          className="card-title mb-5
-          md:mb-8">{login}</Link>
+          target="_blank"
+          className={`card-title mb-5
+          ${theme ? "text-black" : "text-white"}
+          md:mb-8`}>{login}</Link>
         </section>
       </section>
 
       <Link href={`/user/${login}`}
       target="_blank"
-      className="btn btn-md absolute bottom-1 right-1 text-base
-      md:btn-sm md:text-xs">Visit Profile</Link>
+      className={`btn btn-md absolute bottom-0 right-1 text-base
+      ${theme && "btn-outline btn-neutral"}
+      md:btn-sm md:text-xs`}>Visit Profile</Link>
     </section>
   );
 }
