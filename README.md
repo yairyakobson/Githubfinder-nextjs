@@ -1,4 +1,5 @@
 This is Githubfinder built in NextJS App Router.
+
 Vite & legacy build https://github.com/yairyakobson/GithubFinder
 
 To run the application run the **npm run build** command and in a separate terminal run:
